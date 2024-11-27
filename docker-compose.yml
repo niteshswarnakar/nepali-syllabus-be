@@ -1,0 +1,14 @@
+version: '3.9'  # Specify the Docker Compose file format version
+
+services:
+  postgres:
+    image: postgres:latest  # Specify the image version
+    container_name: nepali-syllabus-db
+    ports:
+      - '${POSTGRES_PORT}:${PG_PORT}'  # Ensure these variables are set in your environment
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data  # Ensure this path is accessible
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  # Environment variables must not use '%'
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
